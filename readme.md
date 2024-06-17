@@ -22,7 +22,7 @@
   - initiallise a migration folder
     - alembic init <name of folder>
   - alembic.ini -> sqlalchemy.url -> change address to sqlite:///my_db.db
-  - show models we want to have migrated
+  - show models we want to have migrated and add our models metadata to env.py.
     - <name of folder> -> env.py -> target_metadata -> from models import BaseModel, Grade, Course, Student 
     - target_metadata = [BaseModel.metadata]
   - create migration
@@ -38,7 +38,12 @@
 - create class
 - import engine
 - create settings.py to store variables
-    - set DB_address
+    - set DB_address to : sqlite:///my_db.db
+- import settings
+  - set DB_address
+  - connects engine
+  - can create sessions with engine
+- from sqlalchemy.orm import sessionmaker
 
 ## register application
 

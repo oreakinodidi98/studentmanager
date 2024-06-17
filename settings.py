@@ -1,1 +1,1 @@
-DB_address = "sqlite"
+DB_address = "sqlite:///my_db.db"

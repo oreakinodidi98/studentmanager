@@ -38,15 +38,15 @@ class Student(BaseModel):
     __tablename__ = "Students" # name of the table in the database
     name = Column("name", String(100), nullable=False)
     surname = Column('surname', String, nullable=False)
-    date_of_birth = Column('address', Date)
+    date_of_birth = Column('Date_of_birth', Date)
     email = Column('email', String)
     phone_number = Column("phone_number", String)
-    grades = relationship(Grade)# grades is a relationship between the Student and Grade models
-    courses = relationship(Course) # courses is a relationship between the Student and Course models
-
+    grades = relationship("Grade", backref="student")  # Define backref for bidirectional relationship
+    #courses = relationship("Course", secondary="grades", backref="students")  # Define secondary relationship
+    
     # for testing purposers use __repr__ to return a string representation of the object
     def __repr__(self):
-        return f"<{self.id} - ({self.name} {self.surname}) {self.grades = } {self.courses = }>"
+        return f"<{self.id} - ({self.name} {self.surname}) {self.grades = }>"
 
 
     
