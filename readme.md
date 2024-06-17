@@ -3,14 +3,42 @@
 - python -m venv venv
 - . .\venv\Scripts\Activate
 - pip install django
+- pip install sqlalchemy
+- pip install alembic
 - pip list
 - pip freeze > requirements.txt
-- **Inastal a DJANGO project ->** django-admin startproject sports_project .
+- **Instal a DJANGO project ->** django-admin startproject sports_project .
 - run server -> python manage.py runserver
 - folder structure
   - settings.py -> settings of application
   - urls.py ->  path
-- **Inastal a DJANGO app ->**django-admin startapp registration_app
+- **Instal a DJANGO app ->**django-admin startapp registration_app
+
+## modles
+
+- create modles.py
+- now perform migration
+  - alembic --version
+  - initiallise a migration folder
+    - alembic init <name of folder>
+  - alembic.ini -> sqlalchemy.url -> change address to sqlite:///my_db.db
+  - show models we want to have migrated
+    - <name of folder> -> env.py -> target_metadata -> from models import BaseModel, Grade, Course, Student 
+    - target_metadata = [BaseModel.metadata]
+  - create migration
+    - alembic revision --autogenerate -m "added student , grade and class tables"
+  - apply migration
+    - alembic upgrade head
+  - connect with DBeaver
+    - SQL lite -> path to current folder
+
+## student manager
+
+- class to manage models
+- create class
+- import engine
+- create settings.py to store variables
+    - set DB_address
 
 ## register application
 
