@@ -58,7 +58,10 @@ class Studentmanager:
 
     # add behaviour to add_grade
     def add_grade(self, student_id, subject, grade, course_id):
-        new_grade = Grade(student_id=student_id, subject=subject, grade=grade, course_id=course_id)
+        new_grade = Grade(student_id=student_id, 
+                          subject=subject, 
+                          grade=grade, 
+                          course_id=course_id)
         with self.get_session as session:
             result = session.query(Grade).filter(Grade.student_id == student_id, Grade.subject == subject).first()
             if result:
@@ -69,4 +72,8 @@ class Studentmanager:
 # testing purposes
 from datetime import date
 test=Studentmanager()
-test.add_student("John", "Doe", date(1990, 1, 1), "test@gmail.com", "07570810555")
+# test.add_student("John", "Doe", date(1990, 1, 1), "test@gmail.com", "07570810555")
+# test.add_student("Jane", "Doe", date(1990, 1, 1), "demo@gmail.com", "07570810556")
+#test.add_grade(12, "english", 9, 12)
+test.view_all_students()
+print(test.get_student(12))
